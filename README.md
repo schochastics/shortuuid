@@ -6,7 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of shortuuid is to …
+The goal of shortuuid is to generate and translate standard UUIDs into
+shorter - or just different - formats and back.
 
 ## Installation
 
@@ -25,7 +26,7 @@ library(shortuuid)
 # generate random uuids
 id <- generate_uuid()
 id
-#> 6019d143-89d7-4410-9efc-f14b07588590
+#> 887b0638-4156-49ba-ba3b-6d3603822d49
 ```
 
 ``` r
@@ -36,11 +37,11 @@ is.uuid(id)
 ``` r
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 uuid_to_bitcoin58(id)
-#> [1] "CsHPuEKk1WxNjtsZ1rkY7H"
+#> [1] "HrVAvJU5w5FaJFtzGEhKMA"
 ```
 
 ``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 uuid_to_flickr58(id)
-#> [1] "cShoUejK1vXnJTSy1RKx7h"
+#> [1] "hRuaVit5W5fzifTZgeGjma"
 ```

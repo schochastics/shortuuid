@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of shortuuid is to ...
+The goal of shortuuid is to generate and translate standard UUIDs into shorter - or just different - formats and back.
 
 ## Installation
 
