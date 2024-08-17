@@ -1,0 +1,3 @@
+# shortuuid (development version)
+
+* Initial
