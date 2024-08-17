@@ -74,8 +74,8 @@ std::string encode58_int(int input, const std::string& alphabet) {
 }
 
 // [[Rcpp::export]]
-std::string uuid_to_base58(const std::string& uuid_str,
-                           const std::string& alphabet) {
+std::string uuid_to_base58_cpp(const std::string& uuid_str,
+                               const std::string& alphabet) {
   std::vector<uint8_t> bytes = uuid_to_bytes(uuid_str);
   const size_t base = alphabet.length();
   const char first = alphabet[0];

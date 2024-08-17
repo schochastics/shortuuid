@@ -1,24 +1,12 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-    collapse = TRUE,
-    comment = "#>",
-    fig.path = "man/figures/README-",
-    out.width = "100%"
-)
-```
 
 # shortuuid
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of shortuuid is to ...
+The goal of shortuuid is to …
 
 ## Installation
 
@@ -32,16 +20,27 @@ remotes::install_github("schochastics/shortuuid")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+``` r
 library(shortuuid)
 # generate random uuids
 id <- generate_uuid()
 id
-is.uuid(id)
+#> 6019d143-89d7-4410-9efc-f14b07588590
+```
 
+``` r
+is.uuid(id)
+#> [1] TRUE
+```
+
+``` r
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 uuid_to_bitcoin58(id)
+#> [1] "CsHPuEKk1WxNjtsZ1rkY7H"
+```
 
+``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 uuid_to_flickr58(id)
+#> [1] "cShoUejK1vXnJTSy1RKx7h"
 ```
