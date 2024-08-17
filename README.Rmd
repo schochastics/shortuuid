@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 
 The goal of shortuuid is to generate and translate standard UUIDs into shorter - or just different - formats and back.
 Inspired by [short-uuid](https://www.npmjs.com/package/short-uuid) and [fosstodon](https://fosstodon.org/@josi/112978240064605859)
+
 ## Installation
 
 You can install the development version of shortuuid like so:
