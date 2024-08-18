@@ -37,16 +37,16 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(shortuuid)
 # generate random uuids
-id <- generate_uuid()
-id
-is.uuid(id)
+ids <- generate_uuid(n = 5)
+ids
+is.uuid(ids)
 
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-b58 <- uuid_to_bitcoin58(id)
+b58 <- uuid_to_bitcoin58(ids)
 b58
 
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
-f58 <- uuid_to_flickr58(id)
+f58 <- uuid_to_flickr58(ids)
 f58
 # convert back
 bitcoin58_to_uuid(b58)
