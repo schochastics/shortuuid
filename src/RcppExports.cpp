@@ -47,14 +47,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // uuid_to_base58_cpp
-std::string uuid_to_base58_cpp(const std::string& uuid_str, const std::string& alphabet);
-RcppExport SEXP _shortuuid_uuid_to_base58_cpp(SEXP uuid_strSEXP, SEXP alphabetSEXP) {
+std::vector<std::string> uuid_to_base58_cpp(const std::vector<std::string>& uuid_str_vec, const std::string& alphabet);
+RcppExport SEXP _shortuuid_uuid_to_base58_cpp(SEXP uuid_str_vecSEXP, SEXP alphabetSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const std::string& >::type uuid_str(uuid_strSEXP);
+    Rcpp::traits::input_parameter< const std::vector<std::string>& >::type uuid_str_vec(uuid_str_vecSEXP);
     Rcpp::traits::input_parameter< const std::string& >::type alphabet(alphabetSEXP);
-    rcpp_result_gen = Rcpp::wrap(uuid_to_base58_cpp(uuid_str, alphabet));
+    rcpp_result_gen = Rcpp::wrap(uuid_to_base58_cpp(uuid_str_vec, alphabet));
     return rcpp_result_gen;
 END_RCPP
 }

@@ -17,10 +17,14 @@ uuid_to_base58 <- function(input, alphabet) {
     if (missing(alphabet)) {
         stop("alphabet missing with no default")
     }
-    if (!validate.uuid(input)) {
-        stop("input is not a valid uuid")
+    idx <- !validate.uuid(input)
+    if (any(idx)) {
+        warning("NAs introduced by coercion", call. = FALSE)
     }
-    uuid_to_base58_cpp(.rmdash(input), alphabet)
+    out <- rep(NA_character_, length(input))
+    tmp <- uuid_to_base58_cpp(.rmdash(input[!idx]), alphabet)
+    out[!idx] <- tmp
+    out
 }
 
 

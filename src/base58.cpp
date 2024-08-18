@@ -96,37 +96,44 @@ std::string encode58_int(int input, const std::string& alphabet) {
 }
 
 // [[Rcpp::export]]
-std::string uuid_to_base58_cpp(const std::string& uuid_str,
-                               const std::string& alphabet) {
-  std::vector<uint8_t> bytes = uuid_to_bytes(uuid_str);
-  const size_t base = alphabet.length();
-  const char first = alphabet[0];
-  std::vector<int> digits(1, 0);
+std::vector<std::string> uuid_to_base58_cpp(
+    const std::vector<std::string>& uuid_str_vec, const std::string& alphabet) {
+  std::vector<std::string> output_vec;
+  output_vec.reserve(uuid_str_vec.size());  // Reserve space for efficiency
 
-  for (size_t i = 0; i < bytes.size(); ++i) {
-    int carry = bytes[i];
-    for (size_t j = 0; j < digits.size(); ++j) {
-      carry += digits[j] << 8;
-      digits[j] = carry % base;
-      carry /= base;
+  for (const auto& uuid_str : uuid_str_vec) {
+    std::vector<uint8_t> bytes = uuid_to_bytes(uuid_str);
+    const size_t base = alphabet.length();
+    const char first = alphabet[0];
+    std::vector<int> digits(1, 0);
+
+    for (size_t i = 0; i < bytes.size(); ++i) {
+      int carry = bytes[i];
+      for (size_t j = 0; j < digits.size(); ++j) {
+        carry += digits[j] << 8;
+        digits[j] = carry % base;
+        carry /= base;
+      }
+      while (carry > 0) {
+        digits.push_back(carry % base);
+        carry /= base;
+      }
     }
-    while (carry > 0) {
-      digits.push_back(carry % base);
-      carry /= base;
+
+    std::string output;
+    for (size_t i = 0;
+         i < bytes.size() && bytes[i] == 0 && i < bytes.size() - 1; ++i) {
+      output += first;
     }
+
+    for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
+      output += alphabet[*it];
+    }
+
+    output_vec.push_back(output);
   }
 
-  std::string output;
-  for (size_t i = 0; i < bytes.size() && bytes[i] == 0 && i < bytes.size() - 1;
-       ++i) {
-    output += first;
-  }
-
-  for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
-    output += alphabet[*it];
-  }
-
-  return output;
+  return output_vec;
 }
 
 // [[Rcpp::export]]

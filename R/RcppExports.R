@@ -13,8 +13,8 @@ encode58_int <- function(input, alphabet) {
     .Call(`_shortuuid_encode58_int`, input, alphabet)
 }
 
-uuid_to_base58_cpp <- function(uuid_str, alphabet) {
-    .Call(`_shortuuid_uuid_to_base58_cpp`, uuid_str, alphabet)
+uuid_to_base58_cpp <- function(uuid_str_vec, alphabet) {
+    .Call(`_shortuuid_uuid_to_base58_cpp`, uuid_str_vec, alphabet)
 }
 
 bytes_to_hex <- function(bytes) {
