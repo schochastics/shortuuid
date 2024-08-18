@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # shortuuid
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/schochastics/shortuuid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/schochastics/shortuuid/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of shortuuid is to generate and translate standard UUIDs into shorter - or just different - formats and back.

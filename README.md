@@ -4,6 +4,8 @@
 # shortuuid
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/schochastics/shortuuid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/schochastics/shortuuid/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of shortuuid is to generate and translate standard UUIDs into
@@ -28,7 +30,7 @@ library(shortuuid)
 # generate random uuids
 id <- generate_uuid()
 id
-#> a2a5a9dd-8b41-4d7d-b04a-6841d066bc18
+#> [1] "310ca046-a3ca-4d84-a430-71c817e3ceed"
 ```
 
 ``` r
@@ -40,25 +42,25 @@ is.uuid(id)
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 b58 <- uuid_to_bitcoin58(id)
 b58
-#> [1] "M5tngZoKGoK7zMLo6SHVm1"
+#> [1] "74J97TSP7czk2d9NbSnxK6"
 ```
 
 ``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 f58 <- uuid_to_flickr58(id)
 f58
-#> [1] "m5TMFyNjgNj7ZmkN6rhuL1"
+#> [1] "74i97sro7BZK2C9nArMXj6"
 ```
 
 ``` r
 # convert back
 bitcoin58_to_uuid(b58)
-#> [1] "a2a5a9dd-8b41-4d7d-b04a-6841d066bc18"
+#> [1] "310ca046-a3ca-4d84-a430-71c817e3ceed"
 ```
 
 ``` r
 flickr58_to_uuid(f58)
-#> [1] "a2a5a9dd-8b41-4d7d-b04a-6841d066bc18"
+#> [1] "310ca046-a3ca-4d84-a430-71c817e3ceed"
 ```
 
 ## Addendum
