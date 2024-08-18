@@ -4,7 +4,10 @@
 \alias{generate_uuid}
 \title{Generate a random RFC4122 v4-compliant UUID}
 \usage{
-generate_uuid()
+generate_uuid(n = 1)
+}
+\arguments{
+\item{n}{number of ids to generate}
 }
 \description{
 Generate a random RFC4122 v4-compliant UUID

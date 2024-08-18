@@ -18,13 +18,6 @@
 
     return(formatted_uuid)
 }
-#' Print uuid
-#' @param x A uuid object
-#' @param ... additional arguments to print
-#' @export
-print.uuid <- function(x, ...) {
-    cat(x)
-}
 
 #' check if object is of class uuid
 #' @param x A uuid object

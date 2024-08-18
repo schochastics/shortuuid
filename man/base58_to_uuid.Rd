@@ -7,7 +7,7 @@
 base58_to_uuid(input, alphabet)
 }
 \arguments{
-\item{input}{base58}
+\item{input}{character vector of base58 strings}
 
 \item{alphabet}{character vector representing alphabet}
 }
