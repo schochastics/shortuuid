@@ -53,7 +53,7 @@ base58_to_uuid <- function(input, alphabet) {
         stop("alphabet missing with no default")
     }
 
-    idx <- !is.base58(input, alphabet) | nchar(input) != ceiling(32 * log(16) / log(length(alphabet)))
+    idx <- !is.base58(input, alphabet) | nchar(input) != ceiling(32 * log(16) / log(nchar(alphabet)))
     if (any(idx)) {
         warning("NAs introduced by coercion", call. = FALSE)
     }
