@@ -46,7 +46,8 @@ base58_to_uuid <- function(input, alphabet) {
         stop("alphabet missing with no default")
     }
 
-    .adddash(base58_to_uuid_cpp(input, alphabet))
+    id <- .adddash(base58_to_uuid_cpp(input, alphabet))
+    as.uuid(id)
 }
 
 #' Convert flickr58 to uuid
