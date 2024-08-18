@@ -30,9 +30,11 @@ library(shortuuid)
 # generate random uuids
 ids <- generate_uuid(n = 5)
 ids
-#> [1] "3feb61b6-fa7d-4916-aa96-66b592eaeba3" "37720bce-e10c-4728-8464-768f643c15ce"
-#> [3] "02261e5b-337a-4c3f-8536-09dff9083647" "293e7339-df06-4ea1-bf4b-6e2083951f45"
-#> [5] "b4cc99b5-3a0f-4df2-aa4b-6e1026a6232e"
+#> [1] "8f402757-a10d-447f-9601-656a7b9063cd"
+#> [2] "f99091f8-dabf-4b91-9c6e-978156f9ad56"
+#> [3] "21d82b56-09b2-4389-a90f-90850988c56a"
+#> [4] "5db66b61-46a3-4eda-a23e-38f6f067a111"
+#> [5] "95b67b20-440d-4813-af8b-4e6c10c21491"
 ```
 
 ``` r
@@ -44,33 +46,35 @@ is.uuid(ids)
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 b58 <- uuid_to_bitcoin58(ids)
 b58
-#> [1] "8toDGGQNM3YM5TaXV9vi3c" "7r77kxEjv6Lgmd7w7XHd1X" "GPf2YcccszxNF162K9hG2" 
-#> [4] "66PnAynkuRJh3Q1UQgQANQ" "PKuBug1DrwQTTnSEowKxyK"
+#> [1] "JgyTBcoJBQjxxrGEWBFjUQ" "XpQTFjwKod2cdsJLDUYw7T" "5BQ1Fg2SM5ajD1LJavHJuF"
+#> [4] "CaBJc7dVNnXYc1EcXh7U4g" "KVFs3SAEFKwqV74HT8gAEL"
 ```
 
 ``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 f58 <- uuid_to_flickr58(ids)
 f58
-#> [1] "8TNdggpnm3xm5szwu9VH3B" "7R77KXeJV6kFLC7W7whC1w" "goE2xBBBSZXnf162j9Gg2" 
-#> [4] "66oMaYMKUqiG3p1tpFpanp" "ojUbUF1dRWpssMreNWjXYj"
+#> [1] "iFYsbBNibpJXXRgevbfJtp" "wPpsfJWjNC2BCSikdtxW7s" "5bp1fF2rm5zJd1kizVhiUf"
+#> [4] "czbiB7CunMwxB1eBwG7t4F" "jufS3raefjWQu74hs8Faek"
 ```
 
 ``` r
 # convert back
 bitcoin58_to_uuid(b58)
-#> Warning: NAs introduced by coercion
-#> [1] "3feb61b6-fa7d-4916-aa96-66b592eaeba3" "37720bce-e10c-4728-8464-768f643c15ce"
-#> [3] NA                                     "293e7339-df06-4ea1-bf4b-6e2083951f45"
-#> [5] "b4cc99b5-3a0f-4df2-aa4b-6e1026a6232e"
+#> [1] "8f402757-a10d-447f-9601-656a7b9063cd"
+#> [2] "f99091f8-dabf-4b91-9c6e-978156f9ad56"
+#> [3] "21d82b56-09b2-4389-a90f-90850988c56a"
+#> [4] "5db66b61-46a3-4eda-a23e-38f6f067a111"
+#> [5] "95b67b20-440d-4813-af8b-4e6c10c21491"
 ```
 
 ``` r
 flickr58_to_uuid(f58)
-#> Warning: NAs introduced by coercion
-#> [1] "3feb61b6-fa7d-4916-aa96-66b592eaeba3" "37720bce-e10c-4728-8464-768f643c15ce"
-#> [3] NA                                     "293e7339-df06-4ea1-bf4b-6e2083951f45"
-#> [5] "b4cc99b5-3a0f-4df2-aa4b-6e1026a6232e"
+#> [1] "8f402757-a10d-447f-9601-656a7b9063cd"
+#> [2] "f99091f8-dabf-4b91-9c6e-978156f9ad56"
+#> [3] "21d82b56-09b2-4389-a90f-90850988c56a"
+#> [4] "5db66b61-46a3-4eda-a23e-38f6f067a111"
+#> [5] "95b67b20-440d-4813-af8b-4e6c10c21491"
 ```
 
 ## Addendum
