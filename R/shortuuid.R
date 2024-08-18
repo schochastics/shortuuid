@@ -45,7 +45,7 @@ uuid_to_bitcoin58 <- function(input) {
 }
 
 #' Convert base58 to uuid
-#' @param input base58
+#' @param input character vector of base58 strings
 #' @param alphabet character vector representing alphabet
 #' @export
 base58_to_uuid <- function(input, alphabet) {
@@ -55,6 +55,15 @@ base58_to_uuid <- function(input, alphabet) {
 
     id <- .adddash(base58_to_uuid_cpp(input, alphabet))
     id
+
+    idx <- !is.base58(input, alphabet)
+    if (any(idx)) {
+        warning("NAs introduced by coercion", call. = FALSE)
+    }
+    out <- rep(NA_character_, length(input))
+    tmp <- .adddash(base58_to_uuid_cpp(input[!idx], alphabet))
+    out[!idx] <- tmp
+    out
 }
 
 #' Convert flickr58 to uuid

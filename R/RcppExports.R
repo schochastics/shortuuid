@@ -21,8 +21,8 @@ bytes_to_hex <- function(bytes) {
     .Call(`_shortuuid_bytes_to_hex`, bytes)
 }
 
-base58_to_uuid_cpp <- function(base58, alphabet) {
-    .Call(`_shortuuid_base58_to_uuid_cpp`, base58, alphabet)
+base58_to_uuid_cpp <- function(base58_vec, alphabet) {
+    .Call(`_shortuuid_base58_to_uuid_cpp`, base58_vec, alphabet)
 }
 
 uuid_v4 <- function(n) {
