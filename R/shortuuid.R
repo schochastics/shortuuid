@@ -14,8 +14,8 @@ uuid_to_base58 <- function(input, alphabet) {
     if (missing(alphabet)) {
         stop("alphabet missing with no default")
     }
-    if (!is.uuid(input)) {
-        stop("input must be uuid")
+    if (!validate.uuid(input)) {
+        stop("input is not a valid uuid")
     }
     uuid_to_base58_cpp(.rmdash(input), alphabet)
 }
