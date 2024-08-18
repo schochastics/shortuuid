@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The goal of shortuuid is to generate and translate standard UUIDs into shorter - or just different - formats and back.
-Inspired by [short-uuid](https://www.npmjs.com/package/short-uuid) and [fosstodon](https://fosstodon.org/@josi/112978240064605859)
+Inspired by [short-uuid](https://www.npmjs.com/package/short-uuid) and a post on [fosstodon](https://fosstodon.org/@josi/112978240064605859)
 
 ## Installation
 
@@ -46,3 +46,7 @@ uuid_to_bitcoin58(id)
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 uuid_to_flickr58(id)
 ```
+
+## Addendum
+
+Code to generate uuids taken from [@rkg8](https://github.com/rkg82/uuid-v4)
