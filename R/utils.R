@@ -20,7 +20,7 @@
 }
 
 #' check if object is of class uuid
-#' @param x A uuid object
+#' @param x A character vector
 #' @export
 is.uuid <- function(x) {
     return(validate.uuid(x))
@@ -40,21 +40,28 @@ is.uuid <- function(x) {
 # }
 
 #' validate if a string is a uuid
-#' @param x a character vector to check
+#' @inheritParams is.uuid
 #' @export
 validate.uuid <- function(x) {
     rege <- "^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$"
     return(grepl(rege, x))
 }
 
+.ulength <- function(x) {
+    length(unique(strsplit(x, "")[[1]]))
+}
 
-#' validate if string is base58
-#' @param x a character vector to check
-#' @param alphabet character vector representing alphabet
+
+#' validate if character vector is base58 encoded
+#' @inheritParams is.uuid
+#' @param alphabet character vector representing an alphabet
 #' @export
 is.base58 <- function(x, alphabet) {
     if (missing(alphabet)) {
         stop("alphabet missing with no default")
+    }
+    if (.ulength(alphabet) != 58) {
+        stop("alphabet does not contain 58 unique characters")
     }
     return(is_valid_alphabet_cpp(x, alphabet))
 }
