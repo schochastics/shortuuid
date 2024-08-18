@@ -19,7 +19,6 @@ std::vector<uint8_t> uuid_to_bytes(const std::string& uuid_str) {
 // [[Rcpp::export]]
 std::string encode58_string(const std::string& input,
                             const std::string& alphabet) {
-  // Convert the input string to a vector of bytes (uint8_t)
   std::vector<uint8_t> bytes(input.begin(), input.end());
 
   const size_t base = alphabet.length();
@@ -39,14 +38,12 @@ std::string encode58_string(const std::string& input,
     }
   }
 
-  // Deal with leading zeros
   std::string output;
   for (size_t i = 0; i < bytes.size() && bytes[i] == 0 && i < bytes.size() - 1;
        ++i) {
     output += first;
   }
 
-  // Convert digits to a string
   for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
     output += alphabet[*it];
   }
@@ -94,14 +91,12 @@ std::string uuid_to_base58_cpp(const std::string& uuid_str,
     }
   }
 
-  // Deal with leading zeros
   std::string output;
   for (size_t i = 0; i < bytes.size() && bytes[i] == 0 && i < bytes.size() - 1;
        ++i) {
     output += first;
   }
 
-  // Convert digits to a string
   for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
     output += alphabet[*it];
   }
