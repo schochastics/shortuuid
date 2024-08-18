@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{is.uuid}
 \alias{is.uuid}
-\title{check for uuid}
+\title{check if object is of class uuid}
 \usage{
 is.uuid(x)
 }
@@ -12,5 +12,5 @@ is.uuid(x)
 \item{...}{additional arguments to print}
 }
 \description{
-check for uuid
+check if object is of class uuid
 }

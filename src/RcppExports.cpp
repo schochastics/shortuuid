@@ -10,6 +10,18 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// is_valid_alphabet_cpp
+std::vector<bool> is_valid_alphabet_cpp(const std::vector<std::string>& strs, const std::string& alphabet);
+RcppExport SEXP _shortuuid_is_valid_alphabet_cpp(SEXP strsSEXP, SEXP alphabetSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<std::string>& >::type strs(strsSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type alphabet(alphabetSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_valid_alphabet_cpp(strs, alphabet));
+    return rcpp_result_gen;
+END_RCPP
+}
 // encode58_string
 std::string encode58_string(const std::string& input, const std::string& alphabet);
 RcppExport SEXP _shortuuid_encode58_string(SEXP inputSEXP, SEXP alphabetSEXP) {
@@ -70,23 +82,25 @@ BEGIN_RCPP
 END_RCPP
 }
 // uuid_v4
-String uuid_v4();
-RcppExport SEXP _shortuuid_uuid_v4() {
+std::vector<std::string> uuid_v4(size_t n);
+RcppExport SEXP _shortuuid_uuid_v4(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(uuid_v4());
+    Rcpp::traits::input_parameter< size_t >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(uuid_v4(n));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_shortuuid_is_valid_alphabet_cpp", (DL_FUNC) &_shortuuid_is_valid_alphabet_cpp, 2},
     {"_shortuuid_encode58_string", (DL_FUNC) &_shortuuid_encode58_string, 2},
     {"_shortuuid_encode58_int", (DL_FUNC) &_shortuuid_encode58_int, 2},
     {"_shortuuid_uuid_to_base58_cpp", (DL_FUNC) &_shortuuid_uuid_to_base58_cpp, 2},
     {"_shortuuid_bytes_to_hex", (DL_FUNC) &_shortuuid_bytes_to_hex, 1},
     {"_shortuuid_base58_to_uuid_cpp", (DL_FUNC) &_shortuuid_base58_to_uuid_cpp, 2},
-    {"_shortuuid_uuid_v4", (DL_FUNC) &_shortuuid_uuid_v4, 0},
+    {"_shortuuid_uuid_v4", (DL_FUNC) &_shortuuid_uuid_v4, 1},
     {NULL, NULL, 0}
 };
 

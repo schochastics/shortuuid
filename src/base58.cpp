@@ -2,7 +2,32 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+#include <unordered_set>
+#include <vector>
+
 #include "uuid.h"
+
+// [[Rcpp::export]]
+std::vector<bool> is_valid_alphabet_cpp(const std::vector<std::string>& strs,
+                                        const std::string& alphabet) {
+  std::unordered_set<char> alphabet_set(alphabet.begin(), alphabet.end());
+  std::vector<bool> results;
+
+  for (const std::string& str : strs) {
+    bool all_found = true;
+
+    for (char ch : str) {
+      if (alphabet_set.find(ch) == alphabet_set.end()) {
+        all_found = false;
+        break;
+      }
+    }
+
+    results.push_back(all_found);
+  }
+
+  return results;
+}
 
 std::vector<uint8_t> uuid_to_bytes(const std::string& uuid_str) {
   std::vector<uint8_t> bytes;
@@ -153,7 +178,14 @@ std::string base58_to_uuid_cpp(const std::string& base58,
 
 // https://github.com/rkg82/uuid-v4
 //  [[Rcpp::export]]
-String uuid_v4() {
-  String s = uuid::v4::UUID::New().String();
-  return s;
+std::vector<std::string> uuid_v4(size_t n) {
+  std::vector<std::string> uuids;
+  uuids.reserve(n);
+
+  for (size_t i = 0; i < n; ++i) {
+    std::string s = uuid::v4::UUID::New().String();
+    uuids.push_back(s);
+  }
+
+  return uuids;
 }

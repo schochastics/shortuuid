@@ -2,13 +2,13 @@
 % Please edit documentation in R/utils.R
 \name{validate.uuid}
 \alias{validate.uuid}
-\title{validate if string is uuid}
+\title{validate if a string is a uuid}
 \usage{
 validate.uuid(x)
 }
 \arguments{
-\item{x}{a character}
+\item{x}{a character vector to check}
 }
 \description{
-validate if string is uuid
+validate if a string is a uuid
 }
