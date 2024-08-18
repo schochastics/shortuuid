@@ -104,6 +104,53 @@ std::string uuid_to_base58_cpp(const std::string& uuid_str,
   return output;
 }
 
+// [[Rcpp::export]]
+std::string bytes_to_hex(const std::vector<uint8_t>& bytes) {
+  std::stringstream hex_stream;
+  hex_stream << std::hex << std::setfill('0');
+  for (uint8_t byte : bytes) {
+    hex_stream << std::setw(2) << static_cast<int>(byte);
+  }
+  return hex_stream.str();
+}
+
+// [[Rcpp::export]]
+std::string base58_to_uuid_cpp(const std::string& base58,
+                               const std::string& alphabet) {
+  std::vector<uint8_t> bytes;
+  const size_t base = alphabet.length();
+
+  std::vector<uint8_t> result;
+
+  for (char c : base58) {
+    size_t index = alphabet.find(c);
+    // if (index == std::string::npos) {
+    //   throw std::invalid_argument("Invalid character in Base58 string");
+    // }
+
+    uint32_t carry = index;
+    for (auto it = result.rbegin(); it != result.rend(); ++it) {
+      carry += (*it) * base;
+      *it = carry & 0xFF;
+      carry >>= 8;
+    }
+
+    while (carry > 0) {
+      result.insert(result.begin(), carry & 0xFF);
+      carry >>= 8;
+    }
+  }
+
+  for (char c : base58) {
+    if (c == alphabet[0]) {
+      result.insert(result.begin(), 0);
+    } else {
+      break;
+    }
+  }
+  return bytes_to_hex(result);
+}
+
 // https://github.com/rkg82/uuid-v4
 //  [[Rcpp::export]]
 String uuid_v4() {

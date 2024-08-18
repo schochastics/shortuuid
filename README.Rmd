@@ -41,10 +41,15 @@ id
 is.uuid(id)
 
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-uuid_to_bitcoin58(id)
+b58 <- uuid_to_bitcoin58(id)
+b58
 
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
-uuid_to_flickr58(id)
+f58 <- uuid_to_flickr58(id)
+f58
+# convert back
+bitcoin58_to_uuid(b58)
+flickr58_to_uuid(f58)
 ```
 
 ## Addendum

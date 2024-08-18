@@ -2,6 +2,22 @@
     gsub("\\-", "", x)
 }
 
+.adddash <- function(x) {
+    if (nchar(x) != 32) {
+        stop("Invalid UUID string length. UUID without dashes should be exactly 32 characters.")
+    }
+
+    # Insert dashes at the correct positions
+    formatted_uuid <- paste0(
+        substr(x, 1, 8), "-",
+        substr(x, 9, 12), "-",
+        substr(x, 13, 16), "-",
+        substr(x, 17, 20), "-",
+        substr(x, 21, 32)
+    )
+
+    return(formatted_uuid)
+}
 #' Print uuid
 #' @param x A uuid object
 #' @param ... additional arguments to print

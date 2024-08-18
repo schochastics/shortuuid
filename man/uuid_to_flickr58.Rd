@@ -2,7 +2,7 @@
 % Please edit documentation in R/shortuuid.R
 \name{uuid_to_flickr58}
 \alias{uuid_to_flickr58}
-\title{Convert string to flickr58}
+\title{Convert uuid to flickr58}
 \usage{
 uuid_to_flickr58(input)
 }
@@ -10,5 +10,5 @@ uuid_to_flickr58(input)
 \item{input}{character}
 }
 \description{
-Convert string to flickr58
+Convert uuid to flickr58
 }

@@ -2,9 +2,13 @@
 
 S3method(print,uuid)
 export(as.uuid)
+export(base58_to_uuid)
+export(bitcoin58_to_uuid)
+export(flickr58_to_uuid)
 export(generate_uuid)
 export(is.uuid)
 export(uuid_to_base58)
 export(uuid_to_bitcoin58)
 export(uuid_to_flickr58)
+export(validate.uuid)
 useDynLib(shortuuid, .registration = TRUE)

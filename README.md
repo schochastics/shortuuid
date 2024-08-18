@@ -28,7 +28,7 @@ library(shortuuid)
 # generate random uuids
 id <- generate_uuid()
 id
-#> a5310703-2192-40c5-b80e-8014acf7794f
+#> a2a5a9dd-8b41-4d7d-b04a-6841d066bc18
 ```
 
 ``` r
@@ -38,14 +38,27 @@ is.uuid(id)
 
 ``` r
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-uuid_to_bitcoin58(id)
-#> [1] "MQ7jLZrnNjrDTXeSimRk2i"
+b58 <- uuid_to_bitcoin58(id)
+b58
+#> [1] "M5tngZoKGoK7zMLo6SHVm1"
 ```
 
 ``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
-uuid_to_flickr58(id)
-#> [1] "mp7JkyRMnJRdswDrHLqK2H"
+f58 <- uuid_to_flickr58(id)
+f58
+#> [1] "m5TMFyNjgNj7ZmkN6rhuL1"
+```
+
+``` r
+# convert back
+bitcoin58_to_uuid(b58)
+#> [1] "a2a5a9dd-8b41-4d7d-b04a-6841d066bc18"
+```
+
+``` r
+flickr58_to_uuid(f58)
+#> [1] "a2a5a9dd-8b41-4d7d-b04a-6841d066bc18"
 ```
 
 ## Addendum

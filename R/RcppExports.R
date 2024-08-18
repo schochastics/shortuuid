@@ -13,6 +13,14 @@ uuid_to_base58_cpp <- function(uuid_str, alphabet) {
     .Call(`_shortuuid_uuid_to_base58_cpp`, uuid_str, alphabet)
 }
 
+bytes_to_hex <- function(bytes) {
+    .Call(`_shortuuid_bytes_to_hex`, bytes)
+}
+
+base58_to_uuid_cpp <- function(base58, alphabet) {
+    .Call(`_shortuuid_base58_to_uuid_cpp`, base58, alphabet)
+}
+
 uuid_v4 <- function() {
     .Call(`_shortuuid_uuid_v4`)
 }

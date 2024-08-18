@@ -46,6 +46,29 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// bytes_to_hex
+std::string bytes_to_hex(const std::vector<uint8_t>& bytes);
+RcppExport SEXP _shortuuid_bytes_to_hex(SEXP bytesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<uint8_t>& >::type bytes(bytesSEXP);
+    rcpp_result_gen = Rcpp::wrap(bytes_to_hex(bytes));
+    return rcpp_result_gen;
+END_RCPP
+}
+// base58_to_uuid_cpp
+std::string base58_to_uuid_cpp(const std::string& base58, const std::string& alphabet);
+RcppExport SEXP _shortuuid_base58_to_uuid_cpp(SEXP base58SEXP, SEXP alphabetSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type base58(base58SEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type alphabet(alphabetSEXP);
+    rcpp_result_gen = Rcpp::wrap(base58_to_uuid_cpp(base58, alphabet));
+    return rcpp_result_gen;
+END_RCPP
+}
 // uuid_v4
 String uuid_v4();
 RcppExport SEXP _shortuuid_uuid_v4() {
@@ -61,6 +84,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_shortuuid_encode58_string", (DL_FUNC) &_shortuuid_encode58_string, 2},
     {"_shortuuid_encode58_int", (DL_FUNC) &_shortuuid_encode58_int, 2},
     {"_shortuuid_uuid_to_base58_cpp", (DL_FUNC) &_shortuuid_uuid_to_base58_cpp, 2},
+    {"_shortuuid_bytes_to_hex", (DL_FUNC) &_shortuuid_bytes_to_hex, 1},
+    {"_shortuuid_base58_to_uuid_cpp", (DL_FUNC) &_shortuuid_base58_to_uuid_cpp, 2},
     {"_shortuuid_uuid_v4", (DL_FUNC) &_shortuuid_uuid_v4, 0},
     {NULL, NULL, 0}
 };
