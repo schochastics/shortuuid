@@ -8,8 +8,6 @@ is.uuid(x)
 }
 \arguments{
 \item{x}{A uuid object}
-
-\item{...}{additional arguments to print}
 }
 \description{
 check if object is of class uuid

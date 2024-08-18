@@ -21,7 +21,6 @@
 
 #' check if object is of class uuid
 #' @param x A uuid object
-#' @param ... additional arguments to print
 #' @export
 is.uuid <- function(x) {
     return(validate.uuid(x))
