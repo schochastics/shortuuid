@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# shortuuid
+# shortuuid <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 
@@ -30,11 +30,11 @@ library(shortuuid)
 # generate random uuids
 ids <- generate_uuid(n = 5)
 ids
-#> [1] "8f402757-a10d-447f-9601-656a7b9063cd"
-#> [2] "f99091f8-dabf-4b91-9c6e-978156f9ad56"
-#> [3] "21d82b56-09b2-4389-a90f-90850988c56a"
-#> [4] "5db66b61-46a3-4eda-a23e-38f6f067a111"
-#> [5] "95b67b20-440d-4813-af8b-4e6c10c21491"
+#> [1] "bcebf5e3-2ee8-46f4-a31a-a92392218067"
+#> [2] "672311ef-ffb7-4ccf-9d32-43ea69366b59"
+#> [3] "ba041d3b-2b5f-4973-843a-5af11d3e0d83"
+#> [4] "33a2c8b1-af02-41bf-bf00-1de387bfa160"
+#> [5] "83f32d4a-dee1-4f37-b9e1-2fbf4263af71"
 ```
 
 ``` r
@@ -46,35 +46,35 @@ is.uuid(ids)
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 b58 <- uuid_to_bitcoin58(ids)
 b58
-#> [1] "JgyTBcoJBQjxxrGEWBFjUQ" "XpQTFjwKod2cdsJLDUYw7T" "5BQ1Fg2SM5ajD1LJavHJuF"
-#> [4] "CaBJc7dVNnXYc1EcXh7U4g" "KVFs3SAEFKwqV74HT8gAEL"
+#> [1] "QL5HS5bUkCksVHSdZRARxi" "DjgDY7cqTkMb4QeC2bbAHe" "PyGGrbPiqaQJZ3wkuZ3dbp"
+#> [4] "7Npbe4WM8YKcSuz9YXCmWf" "HJ38h8nL729Sg9YpoFcbUt"
 ```
 
 ``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 f58 <- uuid_to_flickr58(ids)
 f58
-#> [1] "iFYsbBNibpJXXRgevbfJtp" "wPpsfJWjNC2BCSikdtxW7s" "5bp1fF2rm5zJd1kizVhiUf"
-#> [4] "czbiB7CunMwxB1eBwG7t4F" "jufS3raefjWQu74hs8Faek"
+#> [1] "pk5hr5AtKcKSuhrCyqaqXH" "dJFdx7BQsKmA4pDc2AAahD" "oYggRAoHQzpiy3WKUy3CAP"
+#> [4] "7nPAD4vm8xjBrUZ9xwcLvE" "hi38G8Mk729rF9xPNfBAtT"
 ```
 
 ``` r
 # convert back
 bitcoin58_to_uuid(b58)
-#> [1] "8f402757-a10d-447f-9601-656a7b9063cd"
-#> [2] "f99091f8-dabf-4b91-9c6e-978156f9ad56"
-#> [3] "21d82b56-09b2-4389-a90f-90850988c56a"
-#> [4] "5db66b61-46a3-4eda-a23e-38f6f067a111"
-#> [5] "95b67b20-440d-4813-af8b-4e6c10c21491"
+#> [1] "bcebf5e3-2ee8-46f4-a31a-a92392218067"
+#> [2] "672311ef-ffb7-4ccf-9d32-43ea69366b59"
+#> [3] "ba041d3b-2b5f-4973-843a-5af11d3e0d83"
+#> [4] "33a2c8b1-af02-41bf-bf00-1de387bfa160"
+#> [5] "83f32d4a-dee1-4f37-b9e1-2fbf4263af71"
 ```
 
 ``` r
 flickr58_to_uuid(f58)
-#> [1] "8f402757-a10d-447f-9601-656a7b9063cd"
-#> [2] "f99091f8-dabf-4b91-9c6e-978156f9ad56"
-#> [3] "21d82b56-09b2-4389-a90f-90850988c56a"
-#> [4] "5db66b61-46a3-4eda-a23e-38f6f067a111"
-#> [5] "95b67b20-440d-4813-af8b-4e6c10c21491"
+#> [1] "bcebf5e3-2ee8-46f4-a31a-a92392218067"
+#> [2] "672311ef-ffb7-4ccf-9d32-43ea69366b59"
+#> [3] "ba041d3b-2b5f-4973-843a-5af11d3e0d83"
+#> [4] "33a2c8b1-af02-41bf-bf00-1de387bfa160"
+#> [5] "83f32d4a-dee1-4f37-b9e1-2fbf4263af71"
 ```
 
 ## Addendum
