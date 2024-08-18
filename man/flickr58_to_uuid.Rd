@@ -2,13 +2,16 @@
 % Please edit documentation in R/shortuuid.R
 \name{flickr58_to_uuid}
 \alias{flickr58_to_uuid}
-\title{Convert flickr58 to uuid}
+\title{Convert base58 flickr encoded character vector to uuid}
 \usage{
 flickr58_to_uuid(input)
 }
 \arguments{
-\item{input}{character}
+\item{input}{character vector of base58 strings}
+}
+\value{
+character vector of uuids
 }
 \description{
-Convert flickr58 to uuid
+Convert base58 flickr encoded character vector to uuid
 }

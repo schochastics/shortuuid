@@ -51,6 +51,10 @@ validate.uuid <- function(x) {
     length(unique(strsplit(x, "")[[1]]))
 }
 
+.is_alphabet <- function(x, len = 58) {
+    return(.ulength(x) == len)
+}
+
 
 #' validate if character vector is base58 encoded
 #' @inheritParams is.uuid
@@ -60,7 +64,7 @@ is.base58 <- function(x, alphabet) {
     if (missing(alphabet)) {
         stop("alphabet missing with no default")
     }
-    if (.ulength(alphabet) != 58) {
+    if (!.is_alphabet(alphabet, 58)) {
         stop("alphabet does not contain 58 unique characters")
     }
     return(is_valid_alphabet_cpp(x, alphabet))

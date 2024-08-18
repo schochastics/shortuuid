@@ -7,7 +7,7 @@
 is.uuid(x)
 }
 \arguments{
-\item{x}{A uuid object}
+\item{x}{A character vector}
 }
 \description{
 check if object is of class uuid

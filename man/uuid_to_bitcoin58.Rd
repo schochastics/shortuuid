@@ -2,13 +2,16 @@
 % Please edit documentation in R/shortuuid.R
 \name{uuid_to_bitcoin58}
 \alias{uuid_to_bitcoin58}
-\title{Convert uuid to flickr58}
+\title{Convert uuid to base58 encoding of bitcoin}
 \usage{
 uuid_to_bitcoin58(input)
 }
 \arguments{
-\item{input}{character}
+\item{input}{character vector of uuids}
+}
+\value{
+character vector of base58 encoded uuids
 }
 \description{
-Convert uuid to flickr58
+Convert uuid to base58 encoding of bitcoin
 }

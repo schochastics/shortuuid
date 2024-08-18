@@ -2,15 +2,15 @@
 % Please edit documentation in R/utils.R
 \name{is.base58}
 \alias{is.base58}
-\title{validate if string is base58}
+\title{validate if character vector is base58 encoded}
 \usage{
 is.base58(x, alphabet)
 }
 \arguments{
-\item{x}{a character vector to check}
+\item{x}{A character vector}
 
-\item{alphabet}{character vector representing alphabet}
+\item{alphabet}{character vector representing an alphabet}
 }
 \description{
-validate if string is base58
+validate if character vector is base58 encoded
 }

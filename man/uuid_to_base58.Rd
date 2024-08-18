@@ -7,9 +7,12 @@
 uuid_to_base58(input, alphabet)
 }
 \arguments{
-\item{input}{uuid}
+\item{input}{character vector of uuids}
 
-\item{alphabet}{character vector representing alphabet}
+\item{alphabet}{character vector representing an alphabet}
+}
+\value{
+character vector of base58 encoded uuids
 }
 \description{
 Convert uuid to base58

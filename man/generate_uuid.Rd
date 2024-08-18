@@ -9,6 +9,9 @@ generate_uuid(n = 1)
 \arguments{
 \item{n}{number of ids to generate}
 }
+\value{
+character vector of uuids
+}
 \description{
 Generate a random RFC4122 v4-compliant UUID
 }

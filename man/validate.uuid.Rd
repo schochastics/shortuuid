@@ -7,7 +7,7 @@
 validate.uuid(x)
 }
 \arguments{
-\item{x}{a character vector to check}
+\item{x}{A character vector}
 }
 \description{
 validate if a string is a uuid
