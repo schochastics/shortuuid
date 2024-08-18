@@ -2,8 +2,8 @@ Package: shortuuid
 Title: Generate and Translate Standard UUIDs
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("David", "Schoch", , "david@schochastics.net", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-2952-4812"))
 Description: Generate and translate standard UUIDs into shorter - or just different - formats and back. Also implements base58 encoders and decoders. 
 License: MIT + file LICENSE
 Encoding: UTF-8
