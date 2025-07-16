@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/schochastics/shortuuid/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/schochastics/shortuuid/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/shortuuid)](https://CRAN.R-project.org/package=shortuuid)
 <!-- badges: end -->
 
 The goal of shortuuid is to generate and translate standard UUIDs into
@@ -18,63 +20,51 @@ shorter - or just different - formats and back. Inspired by
 You can install the development version of shortuuid like so:
 
 ``` r
-remotes::install_github("schochastics/shortuuid")
+pak::pak("schochastics/shortuuid")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This package provides functions to generate and convert UUIDs to
+different formats.
 
 ``` r
 library(shortuuid)
 # generate random uuids
 ids <- generate_uuid(n = 5)
 ids
-#> [1] "bcebf5e3-2ee8-46f4-a31a-a92392218067"
-#> [2] "672311ef-ffb7-4ccf-9d32-43ea69366b59"
-#> [3] "ba041d3b-2b5f-4973-843a-5af11d3e0d83"
-#> [4] "33a2c8b1-af02-41bf-bf00-1de387bfa160"
-#> [5] "83f32d4a-dee1-4f37-b9e1-2fbf4263af71"
-```
-
-``` r
+#> [1] "1fc2d238-b6f2-4959-af5a-ef9950a4141a"
+#> [2] "fa49a3f8-1644-4e8b-879c-a68d6292e4e1"
+#> [3] "c4109bd3-4d8a-489c-a77a-3a6877ebaab8"
+#> [4] "a4f70fce-0469-4044-aa4b-4fdb8ec57281"
+#> [5] "e8d5f85c-897e-4911-b2f6-d29f816c6643"
 is.uuid(ids)
 #> [1] TRUE TRUE TRUE TRUE TRUE
-```
 
-``` r
 # alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 b58 <- uuid_to_bitcoin58(ids)
 b58
-#> [1] "QL5HS5bUkCksVHSdZRARxi" "DjgDY7cqTkMb4QeC2bbAHe" "PyGGrbPiqaQJZ3wkuZ3dbp"
-#> [4] "7Npbe4WM8YKcSuz9YXCmWf" "HJ38h8nL729Sg9YpoFcbUt"
-```
+#> [1] "4vUZZwaGqmgoLNPrhaZ7JR" "Xuam1xXi4St4kqawLF7mTW" "RDEZPCTUM76cnx3yioKHAX"
+#> [4] "MNVfwXsPf2tqwEdFWqqg9N" "VkbFLW53t7FfTRUgVuxMg6"
 
-``` r
 # alphabet: "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 f58 <- uuid_to_flickr58(ids)
 f58
-#> [1] "pk5hr5AtKcKSuhrCyqaqXH" "dJFdx7BQsKmA4pDc2AAahD" "oYggRAoHQzpiy3WKUy3CAP"
-#> [4] "7nPAD4vm8xjBrUZ9xwcLvE" "hi38G8Mk729rF9xPNfBAtT"
-```
-
-``` r
+#> [1] "4VtyyWzgQLFNknoRGzy7iq" "wUzL1XwH4rT4KQzWkf7Lsv" "qdeyocstm76BMX3YHNjhaw"
+#> [4] "mnuEWwSoE2TQWeCfvQQF9n" "uKAfkv53T7fEsqtFuUXmF6"
 # convert back
 bitcoin58_to_uuid(b58)
-#> [1] "bcebf5e3-2ee8-46f4-a31a-a92392218067"
-#> [2] "672311ef-ffb7-4ccf-9d32-43ea69366b59"
-#> [3] "ba041d3b-2b5f-4973-843a-5af11d3e0d83"
-#> [4] "33a2c8b1-af02-41bf-bf00-1de387bfa160"
-#> [5] "83f32d4a-dee1-4f37-b9e1-2fbf4263af71"
-```
-
-``` r
+#> [1] "1fc2d238-b6f2-4959-af5a-ef9950a4141a"
+#> [2] "fa49a3f8-1644-4e8b-879c-a68d6292e4e1"
+#> [3] "c4109bd3-4d8a-489c-a77a-3a6877ebaab8"
+#> [4] "a4f70fce-0469-4044-aa4b-4fdb8ec57281"
+#> [5] "e8d5f85c-897e-4911-b2f6-d29f816c6643"
 flickr58_to_uuid(f58)
-#> [1] "bcebf5e3-2ee8-46f4-a31a-a92392218067"
-#> [2] "672311ef-ffb7-4ccf-9d32-43ea69366b59"
-#> [3] "ba041d3b-2b5f-4973-843a-5af11d3e0d83"
-#> [4] "33a2c8b1-af02-41bf-bf00-1de387bfa160"
-#> [5] "83f32d4a-dee1-4f37-b9e1-2fbf4263af71"
+#> [1] "1fc2d238-b6f2-4959-af5a-ef9950a4141a"
+#> [2] "fa49a3f8-1644-4e8b-879c-a68d6292e4e1"
+#> [3] "c4109bd3-4d8a-489c-a77a-3a6877ebaab8"
+#> [4] "a4f70fce-0469-4044-aa4b-4fdb8ec57281"
+#> [5] "e8d5f85c-897e-4911-b2f6-d29f816c6643"
 ```
 
 ## Addendum
