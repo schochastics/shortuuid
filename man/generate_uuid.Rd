@@ -15,3 +15,7 @@ character vector of uuids
 \description{
 Generate a random RFC4122 v4-compliant UUID
 }
+\examples{
+generate_uuid(n = 5)
+
+}

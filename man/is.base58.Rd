@@ -11,6 +11,9 @@ is.base58(x, alphabet)
 
 \item{alphabet}{character vector representing an alphabet}
 }
+\value{
+logical vector indicating if each element is a valid base58 string
+}
 \description{
 validate if character vector is base58 encoded
 }

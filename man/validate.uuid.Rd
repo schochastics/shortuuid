@@ -9,6 +9,9 @@ validate.uuid(x)
 \arguments{
 \item{x}{A character vector}
 }
+\value{
+logical indicating if the input is a valid UUID
+}
 \description{
 validate if a string is a uuid
 }

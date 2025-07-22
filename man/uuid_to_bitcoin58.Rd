@@ -15,3 +15,7 @@ character vector of base58 encoded uuids
 \description{
 Convert uuid to base58 encoding of bitcoin
 }
+\examples{
+uuids <- generate_uuid(5)
+uuid_to_bitcoin58(uuids)
+}

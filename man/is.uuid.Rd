@@ -9,6 +9,9 @@ is.uuid(x)
 \arguments{
 \item{x}{A character vector}
 }
+\value{
+logical indicating if the input is a valid UUID
+}
 \description{
 check if object is of class uuid
 }

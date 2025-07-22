@@ -1,6 +1,9 @@
 #' Generate a random RFC4122 v4-compliant UUID
 #' @param n number of ids to generate
 #' @return character vector of uuids
+#' @examples
+#' generate_uuid(n = 5)
+#' 
 #' @export
 generate_uuid <- function(n = 1) {
     if (n <= 0) {
@@ -36,6 +39,10 @@ uuid_to_base58 <- function(input, alphabet) {
 #' Convert uuid to base58 encoding of flickr
 #' @inheritParams uuid_to_base58
 #' @return character vector of base58 encoded uuids
+#' @examples
+#' uuids <- generate_uuid(5)
+#' uuid_to_flickr58(uuids)
+#' 
 #' @export
 uuid_to_flickr58 <- function(input) {
     alphabet <- "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
@@ -45,6 +52,9 @@ uuid_to_flickr58 <- function(input) {
 #' Convert uuid to base58 encoding of bitcoin
 #' @inheritParams uuid_to_base58
 #' @return character vector of base58 encoded uuids
+#' @examples
+#' uuids <- generate_uuid(5)
+#' uuid_to_bitcoin58(uuids)
 #' @export
 uuid_to_bitcoin58 <- function(input) {
     alphabet <- "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"

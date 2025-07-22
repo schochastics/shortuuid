@@ -15,3 +15,8 @@ character vector of base58 encoded uuids
 \description{
 Convert uuid to base58 encoding of flickr
 }
+\examples{
+uuids <- generate_uuid(5)
+uuid_to_flickr58(uuids)
+
+}
