@@ -35,12 +35,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // encode58_int
-std::string encode58_int(int input, const std::string& alphabet);
+std::string encode58_int(int64_t input, const std::string& alphabet);
 RcppExport SEXP _shortuuid_encode58_int(SEXP inputSEXP, SEXP alphabetSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< int >::type input(inputSEXP);
+    Rcpp::traits::input_parameter< int64_t >::type input(inputSEXP);
     Rcpp::traits::input_parameter< const std::string& >::type alphabet(alphabetSEXP);
     rcpp_result_gen = Rcpp::wrap(encode58_int(input, alphabet));
     return rcpp_result_gen;

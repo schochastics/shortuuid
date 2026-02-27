@@ -2,6 +2,8 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+#include <iomanip>
+#include <sstream>
 #include <unordered_set>
 #include <vector>
 
@@ -31,9 +33,10 @@ std::vector<bool> is_valid_alphabet_cpp(const std::vector<std::string>& strs,
 
 std::vector<uint8_t> uuid_to_bytes(const std::string& uuid_str) {
   std::vector<uint8_t> bytes;
+  bytes.reserve(uuid_str.length() / 2);
   for (size_t i = 0; i < uuid_str.length(); i += 2) {
-    std::string byte_string = uuid_str.substr(i, 2);
-    uint8_t byte =
+    const std::string byte_string = uuid_str.substr(i, 2);
+    const uint8_t byte =
         static_cast<uint8_t>(strtol(byte_string.c_str(), nullptr, 16));
     bytes.push_back(byte);
   }
@@ -41,11 +44,9 @@ std::vector<uint8_t> uuid_to_bytes(const std::string& uuid_str) {
   return bytes;
 }
 
-// [[Rcpp::export]]
-std::string encode58_string(const std::string& input,
-                            const std::string& alphabet) {
-  std::vector<uint8_t> bytes(input.begin(), input.end());
-
+// Helper function to encode bytes to base58
+std::string encode_bytes_to_base58(const std::vector<uint8_t>& bytes,
+                                   const std::string& alphabet) {
   const size_t base = alphabet.length();
   const char first = alphabet[0];
   std::vector<int> digits(1, 0);
@@ -64,8 +65,8 @@ std::string encode58_string(const std::string& input,
   }
 
   std::string output;
-  for (size_t i = 0; i < bytes.size() && bytes[i] == 0 && i < bytes.size() - 1;
-       ++i) {
+  // Preserve leading zeros
+  for (size_t i = 0; i < bytes.size() && bytes[i] == 0; ++i) {
     output += first;
   }
 
@@ -77,7 +78,14 @@ std::string encode58_string(const std::string& input,
 }
 
 // [[Rcpp::export]]
-std::string encode58_int(int input, const std::string& alphabet) {
+std::string encode58_string(const std::string& input,
+                            const std::string& alphabet) {
+  const std::vector<uint8_t> bytes(input.begin(), input.end());
+  return encode_bytes_to_base58(bytes, alphabet);
+}
+
+// [[Rcpp::export]]
+std::string encode58_int(int64_t input, const std::string& alphabet) {
   const size_t base = alphabet.length();
   std::string output;
 
@@ -86,7 +94,7 @@ std::string encode58_int(int input, const std::string& alphabet) {
     output = alphabet[0];
   } else {
     while (input > 0) {
-      int remainder = input % base;
+      const int64_t remainder = input % base;
       output = alphabet[remainder] + output;
       input /= base;
     }
@@ -99,38 +107,11 @@ std::string encode58_int(int input, const std::string& alphabet) {
 std::vector<std::string> uuid_to_base58_cpp(
     const std::vector<std::string>& uuid_str_vec, const std::string& alphabet) {
   std::vector<std::string> output_vec;
-  output_vec.reserve(uuid_str_vec.size());  // Reserve space for efficiency
+  output_vec.reserve(uuid_str_vec.size());
 
   for (const auto& uuid_str : uuid_str_vec) {
-    std::vector<uint8_t> bytes = uuid_to_bytes(uuid_str);
-    const size_t base = alphabet.length();
-    const char first = alphabet[0];
-    std::vector<int> digits(1, 0);
-
-    for (size_t i = 0; i < bytes.size(); ++i) {
-      int carry = bytes[i];
-      for (size_t j = 0; j < digits.size(); ++j) {
-        carry += digits[j] << 8;
-        digits[j] = carry % base;
-        carry /= base;
-      }
-      while (carry > 0) {
-        digits.push_back(carry % base);
-        carry /= base;
-      }
-    }
-
-    std::string output;
-    for (size_t i = 0;
-         i < bytes.size() && bytes[i] == 0 && i < bytes.size() - 1; ++i) {
-      output += first;
-    }
-
-    for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
-      output += alphabet[*it];
-    }
-
-    output_vec.push_back(output);
+    const std::vector<uint8_t> bytes = uuid_to_bytes(uuid_str);
+    output_vec.push_back(encode_bytes_to_base58(bytes, alphabet));
   }
 
   return output_vec;
@@ -140,7 +121,7 @@ std::vector<std::string> uuid_to_base58_cpp(
 std::string bytes_to_hex(const std::vector<uint8_t>& bytes) {
   std::stringstream hex_stream;
   hex_stream << std::hex << std::setfill('0');
-  for (uint8_t byte : bytes) {
+  for (const uint8_t byte : bytes) {
     hex_stream << std::setw(2) << static_cast<int>(byte);
   }
   return hex_stream.str();
@@ -150,24 +131,25 @@ std::string bytes_to_hex(const std::vector<uint8_t>& bytes) {
 std::vector<std::string> base58_to_uuid_cpp(
     const std::vector<std::string>& base58_vec, const std::string& alphabet) {
   std::vector<std::string> uuid_vec;
-  uuid_vec.reserve(base58_vec.size());  // Reserve space for efficiency
+  uuid_vec.reserve(base58_vec.size());
 
   for (const auto& base58 : base58_vec) {
-    std::vector<uint8_t> bytes;
     const size_t base = alphabet.length();
+    const char first = alphabet[0];
     std::vector<uint8_t> result;
 
-    for (char c : base58) {
-      size_t index = alphabet.find(c);
+    // Decode base58 string to bytes
+    for (const char c : base58) {
+      const size_t index = alphabet.find(c);
       if (index == std::string::npos) {
         throw std::invalid_argument("Invalid character in Base58 string");
       }
 
-      uint32_t carry = index;
+      uint32_t carry = static_cast<uint32_t>(index);
       for (auto it = result.rbegin(); it != result.rend(); ++it) {
         carry += (*it) * base;
-        *it = carry & 0xFF;
-        carry >>= 8;
+        *it = carry & 0xFF;  // Keep lowest 8 bits
+        carry >>= 8;         // Shift right by 8 bits
       }
 
       while (carry > 0) {
@@ -176,15 +158,16 @@ std::vector<std::string> base58_to_uuid_cpp(
       }
     }
 
-    for (char c : base58) {
-      if (c == alphabet[0]) {
+    // Restore leading zeros
+    for (const char c : base58) {
+      if (c == first) {
         result.insert(result.begin(), 0);
       } else {
         break;
       }
     }
 
-    std::string uuid = bytes_to_hex(result);
+    const std::string uuid = bytes_to_hex(result);
     uuid_vec.push_back(uuid);
   }
 
