@@ -1,5 +1,3 @@
-## R CMD check results
+## Update from 0.1.0 to 0.1.1
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+* refactoring C++ code to be more modular and easier to maintain
